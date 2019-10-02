@@ -1,0 +1,7 @@
+{
+    "domain": "gabal.auth0.com",
+    "clientID": "qn0vOwRBff50ie95OZp1fMwai38hIz4J",
+    "callback": "https://www.inktobermonopoly.com/callback",
+    "audience": "https://gabal.auth0.com/userinfo",
+    "logoutCallback": "https://www.inktobermonopoly.com/home"
+}

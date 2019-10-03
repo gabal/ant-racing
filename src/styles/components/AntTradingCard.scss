@@ -1,0 +1,91 @@
+.ant-trading-card{
+    $lighten-amount: 32%;
+    width: 210px;
+    min-height: 294px;
+    position: relative;
+    padding-bottom: 92px;
+    .ant-racer{
+        margin: 0 auto;
+        @include transform(rotate(45deg));
+    }
+    .MuiLinearProgress-root{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 28px;
+    }
+    .MuiTypography-caption,
+    .MuiTypography-overline {
+        font-size: 0.66rem;
+    }
+    .MuiCardActions-root {
+        position: absolute;
+        left: 0;
+        bottom: 11px;
+        right: 0;
+    }
+    .MuiCardContent-root{
+        margin-top: 10px;
+    }
+    .racer-container{
+        background-color: $default-color;
+        width: 100%;
+        height: 28px;
+        
+        .MuiAvatar-colorDefault{
+            background-color: lighten($default-color, $lighten-amount);
+        }
+        .MuiAvatar-root{
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            border: 2px solid #fff;
+            z-index: 9;
+        }
+    }
+    &.black{
+        .total,
+        .racer-container{
+            background-color: $black-color;
+        }
+        .MuiAvatar-colorDefault{
+            background-color: lighten($black-color, $lighten-amount);
+        }
+    }
+    &.red{
+        .total,
+        .racer-container{
+            background-color: $red-color;
+        }
+        .MuiAvatar-colorDefault{
+            background-color: lighten($red-color, $lighten-amount);
+        }
+    }
+    &.blue{
+        .total,
+        .racer-container{
+            background-color: blue-color;
+        }
+        .MuiAvatar-colorDefault{
+            background-color: lighten($blue-color, $lighten-amount);
+        }
+    }
+    &.silver{
+        .total,
+        .racer-container{
+            background: $silver-color;
+        }
+        .MuiAvatar-colorDefault{
+            background-color: lighten($silver-color, $lighten-amount);
+        }
+    }
+    &.yellow{
+        .total,
+        .racer-container{
+            background-color: $yellow-color;
+        }
+        .MuiAvatar-colorDefault{
+            background-color: lighten($yellow-color, $lighten-amount);
+        }
+    }
+}

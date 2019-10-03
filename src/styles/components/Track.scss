@@ -1,0 +1,100 @@
+@-webkit-keyframes run-forest-run {
+    from {
+        left: -11px;
+    }
+
+    to {
+        left: 110%;
+    }
+}
+@-moz-keyframes run-forest-run {
+    from {
+        left: -11px;
+    }
+
+    to {
+        left: 110%;
+    }
+}
+@-o-keyframes run-forest-run {
+    from {
+        left: -11px;
+    }
+
+    to {
+        left: 110%;
+    }
+}
+@keyframes run-forest-run {
+    from {
+        left: -11px;
+    }
+
+    to {
+        left: 110%;
+    }
+}
+.track-container{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+
+}
+.track{
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    .MuiTypography-caption{
+        color: #CCC;
+        z-index: -1;
+        position: relative;
+        margin-left: 24px;
+        display: none;
+    }
+    .ant-racer{
+        position: absolute;
+        margin-top: 5px;
+        @include transform(rotate(90deg));
+        @include transition-property(none);
+        left: -11px;
+    }
+    &.completed,
+    &.loop{
+        display: block;
+    }
+    &.completed{
+        .ant-racer{
+            @include transition-timing-function(ease-in-out);
+            @include transition-property(left !important);
+            left: 110%;
+        }
+        .MuiTypography-caption{
+            display: block;
+        }
+    }
+    &.loop{
+        li:first-child{
+            border-top: 1px dashed transparent;
+        }
+        .ant-racer{
+            @include animation-name(run-forest-run);
+            @include animation-iteration-count(infinite);
+            @include animation-direction(forward);
+            @include animation-timing-function(linear);
+            left: auto;
+        }
+    }
+    li{
+        display: block;
+        height: 20px;
+        border-bottom: 1px dashed #ccc;
+        position: relative;
+        &:first-child{
+            border-top: 1px dashed #ccc;
+        }
+    }
+}

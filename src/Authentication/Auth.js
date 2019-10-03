@@ -23,7 +23,6 @@ export default class Auth {
                 history.replace('/home');
             } else if (err) {
                 history.replace('/home');
-                console.log(err);
             }
         });
     }

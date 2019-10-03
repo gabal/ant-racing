@@ -1,0 +1,62 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+    background-clip: padding-box;
+}
+@mixin transform($properties) {
+    -webkit-transform: $properties;
+    -ms-transform: $properties;
+    -moz-transform: $properties;
+    -o-transform: $properties;
+    transform: $properties;
+}
+@mixin box-sizing($properties) {
+    -webkit-box-sizing: $properties;
+    -moz-box-sizing: $properties;
+    -o-box-sizing: $properties;
+    box-sizing: $properties;
+}
+
+@mixin animation-name($properties) {
+    -webkit-animation-name: $properties;
+    -moz-animation-name: $properties;
+    -o-animation-name: $properties;
+    animation-name: $properties;
+}
+
+@mixin animation-iteration-count($properties) {
+    -webkit-animation-iteration-count: $properties;
+    -moz-animation-iteration-count: $properties;
+    -o-animation-iteration-count: $properties;
+    animation-iteration-count: $properties;
+}
+
+@mixin animation-direction($properties) {
+    -webkit-animation-direction: $properties;
+    -moz-animation-direction: $properties;
+    -o-animation-direction: $properties;
+    animation-direction: $properties;
+}
+
+@mixin animation-timing-function($properties) {
+    -webkit-animation-timing-function: $properties;
+    -moz-animation-timing-function: $properties;
+    -o-animation-timing-function: $properties;
+    animation-timing-function: $properties;
+}
+
+@mixin transition-timing-function($properties) {
+    -webkit-transition-timing-function: $properties;
+    -moz-transition-timing-function: $properties;
+    -o-transition-timing-function: $properties;
+    transition-timing-function: $properties;
+}
+
+@mixin transition-property($properties) {
+    -webkit-transition-property: $properties;
+    -moz-transition-property: $properties;
+    -o-transition-property: $properties;
+    transition-property: $properties;
+}

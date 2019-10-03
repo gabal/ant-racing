@@ -1,0 +1,25 @@
+.single-bar-chart{
+    $chart-padding: 10px;
+    float: left;
+    width:50%;
+    padding: 0 0 0 $chart-padding;
+    .bar,
+    .total{
+        width: 20px;
+    }
+    .bar{
+        background: #e9e9ef;
+        height: 40px;
+        position: relative;
+        margin: 0 auto 5px;
+    }
+    .total{
+        position: absolute;
+        bottom: 0;
+        background: #3f51b5;
+    }
+    &.first{
+        border-right: 1px dashed #e2e2e2;
+        padding: 0 $chart-padding 0 0;
+    }
+}

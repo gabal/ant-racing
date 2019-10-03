@@ -1,0 +1,27 @@
+.chance-of-winning{
+    position: absolute;
+    @include border-radius(50%);
+    color: #FFF;
+    background: #DD2C00;
+    right: 5px;
+    top: 75px;
+    width:60px;
+    height: 60px;
+    padding: 11px;
+    @include transform(rotate(10deg));
+    .MuiTypography-caption{
+        font-size: 0.30rem;
+        line-height: 0.8rem;
+    }
+    .MuiTypography-h6{
+        line-height: 1.5rem;
+    }
+    &.good{
+        color: #FFF;
+        background: #388E3C;
+    }
+    &.ok{
+        color: #3E2723;
+        background: #FFD600;
+    }
+}

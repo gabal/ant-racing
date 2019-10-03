@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Router } from 'react-router-dom';
-import Home from '../Home';
-import Callback from '../Callback';
+import Home from '../pages/Home';
+import Loader from '../components/Loader';
 import Auth from './Auth';
 import history from './history';
 
@@ -20,7 +20,7 @@ const Routes = () => (
             <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
             <Route path="/callback" render={(props) => {
                 handleAuthentication(props);
-                return <Callback {...props} />
+                return <Loader />
             }} />
         </div>
     </Router>

@@ -1,5 +1,44 @@
+@-webkit-keyframes top-bar-appear{
+    from {
+        top: -64px;
+    }
+
+    to {
+        top: 0;
+    }
+}
+@-moz-keyframes top-bar-appear{
+    from {
+        top: -64px;
+    }
+
+    to {
+        top: 0;
+    }
+}
+@-o-keyframes top-bar-appear{
+    from {
+        top: -64px;
+    }
+
+    to {
+        top: 0;
+    }
+}
+@keyframes top-bar-appear{
+    from {
+        top: -64px;
+    }
+
+    to {
+        top: 0;
+    }
+}
 .ants-container{
     width: 100%;
     overflow: hidden;
     padding: 40px 0 20px;
+}
+.ant-race-app-bar{
+    @include animation(top-bar-appear .18s ease-in-out);
 }

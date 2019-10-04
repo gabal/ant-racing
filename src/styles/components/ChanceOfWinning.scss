@@ -1,14 +1,31 @@
+
+@keyframes pop-me{
+    0% {
+        width: 52px;
+        height: 52px;
+    }
+    90% {
+        width: 62px;
+        height: 62px;
+    }
+    100% {
+        width: 60px;
+        height: 60px;
+    }
+}
 .chance-of-winning{
     position: absolute;
-    @include border-radius(50%);
     color: #FFF;
     background: #DD2C00;
     right: 5px;
     top: 75px;
-    width:60px;
+    width: 60px;
     height: 60px;
     padding: 11px;
+    text-align: center;
+    @include border-radius(50%);
     @include transform(rotate(10deg));
+    @include animation(pop-me .20s ease-in-out);
     .MuiTypography-caption{
         font-size: 0.30rem;
         line-height: 0.8rem;

@@ -19,6 +19,13 @@
     box-sizing: $properties;
 }
 
+@mixin animation($properties) {
+    -webkit-animation: $properties;
+    -moz-animation: $properties;
+    -o-animation: $properties;
+    animation: $properties;
+}
+
 @mixin animation-name($properties) {
     -webkit-animation-name: $properties;
     -moz-animation-name: $properties;
@@ -47,6 +54,13 @@
     animation-timing-function: $properties;
 }
 
+@mixin transition($properties...) {
+    -webkit-transition: $properties;
+    -moz-transition: $properties;
+    -o-transition: $properties;
+    transition: $properties;
+}
+
 @mixin transition-timing-function($properties) {
     -webkit-transition-timing-function: $properties;
     -moz-transition-timing-function: $properties;
@@ -59,4 +73,40 @@
     -moz-transition-property: $properties;
     -o-transition-property: $properties;
     transition-property: $properties;
+}
+@-webkit-keyframes fade-me-in{
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+@-moz-keyframes fade-me-in{
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+@-o-keyframes fade-me-in{
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+@keyframes fade-me-in{
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100%;
+    }
 }

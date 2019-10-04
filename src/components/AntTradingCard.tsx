@@ -8,10 +8,12 @@ import { CardActions, Avatar, Card, CardContent, Typography, LinearProgress } fr
 const AntTradingCard = (props: any) => {
 	const prob:number|null = (props.probability && props.probability>-1) ? Math.round(props.probability*100) : null;
 	const colorClass:string = `ant-trading-card ${props.color.toLowerCase()}`;
+	const cardStyle:any = {
+		animationDuration: `${props.index*.2}s`
+	};
 	return (
-		<Card className={colorClass}>
+		<Card className={colorClass} style={cardStyle}>
 			<div className='racer-container'>
-				
 				<Avatar>
 					<AntRacer key={props.key} multiplier={4} name={props.name} length={props.length} weight={props.weight} color={props.color} probability={props.probability} />
 				</Avatar>

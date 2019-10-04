@@ -1,0 +1,5 @@
+.status-button.MuiFab-root{
+    width: 130px;
+    @include animation(fade-me-in 1s);
+    @include transition(width .18s ease-in-out, background-color .18s ease-in-out);
+}

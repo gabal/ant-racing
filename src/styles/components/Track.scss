@@ -48,6 +48,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    @include animation(fade-me-in 1s 0 2s);
     .MuiTypography-caption{
         color: #CCC;
         z-index: -1;

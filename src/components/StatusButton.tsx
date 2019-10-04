@@ -15,8 +15,11 @@ const StatusButton = (props: any) => {
 	if (definedProbabilities.length > 0) {
 		status = definedProbabilities.filter((ant: any) => { return ant.probability < 0 }).length > 0 ? calculationStatus.calculating : calculationStatus.completed;
 	}
+	const statusButtonStyle:any = {
+        width: status === calculationStatus.calculating ? 52 : 130
+    }
 	return (
-		<Fab variant="extended" color="primary" onClick={props.onClick} disabled={status === calculationStatus.calculating}>
+		<Fab className="status-button" variant="extended" color="primary" onClick={props.onClick} disabled={status === calculationStatus.calculating} style={statusButtonStyle}>
 			{status === calculationStatus.calculating && <CircularProgress size={20} />}
 			{status !== calculationStatus.calculating && status}
       	</Fab>

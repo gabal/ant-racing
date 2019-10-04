@@ -77,7 +77,7 @@ function AntRace(props: any) {
     const completedAnts:any = ants.data.filter((ant:any)=> ant.probability > -1);
     const completed:boolean = completedAnts.length === ants.data.length;
     return (
-        <div>
+        <div className={ants.status}>
             {
                 ants.status === status.waiting && (<Loader {...props} />)
             }
@@ -86,17 +86,17 @@ function AntRace(props: any) {
                 <div>
                     <div className="ants-container">
                         <Grid container className={classes.root} justify="center" spacing={2}>
-                            {ants.data.map((ant: any, key: number) => {
-                                return <Grid key={key} item={true}>
-                                    <AntTradingCard maxValues={ants.maxValues} name={ant.name} length={ant.length} weight={ant.weight} color={ant.color} probability={ant.probability} />
+                            {ants.data.map((ant: any, index: number) => {
+                                return <Grid key={index} item={true}>
+                                    <AntTradingCard index={index} maxValues={ants.maxValues} name={ant.name} length={ant.length} weight={ant.weight} color={ant.color} probability={ant.probability} />
                                 </Grid>
                             })}
-                        </Grid>
+                        </Grid>.
                     </div>
                     {
                         ants.status !== status.noWorkers && (
                         <Grid container className={classes.buttonContainer} justify="center">
-                            <StatusButton onClick={calculateAntsChance} ants={ants} />
+                            <StatusButton onClick={calculateAntsChance} ants={ants}/>
                         </Grid>
                         )
                     }

@@ -1,9 +1,11 @@
+
 .ant-trading-card{
     $lighten-amount: 32%;
     width: 210px;
     min-height: 294px;
     position: relative;
     padding-bottom: 92px;
+    @include animation(fade-me-in 1s linear);
     .ant-racer{
         margin: 0 auto;
         @include transform(rotate(45deg));

@@ -22,7 +22,7 @@ class Home extends Component {
                 {
                     isAuthenticated() &&
                     <div>
-                        <AppBar position="fixed">
+                        <AppBar position="fixed" className="ant-race-app-bar">
                             <Toolbar>
                                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={ this.refreshPage }>
                                     <img src='./logo-white48.png' width="24" height="24" alt="Ant Racing"/>

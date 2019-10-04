@@ -1,45 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core';
-
+import { Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core';
 import AntTradingCard from './AntTradingCard';
+
 import Track from './Track';
 import Loader from './Loader';
-import generateAntWinLikelihoodCalculator from '../utilities/generateAntWinLikelihoodCalculator'
 import StatusButton from './StatusButton';
 import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles(theme => ({
+const useStyles:any = makeStyles(theme => ({
     root: {
       flexGrow: 1,
     },
-    control: {
-      padding: theme.spacing(2),
-    },
+    buttonContainer: {
+        position: 'sticky',
+        bottom: 20
+    }
 }));
-const status = { 
+const status:any = { 
     error: 'error',
     ready: 'ready',
+    noWorkers: 'noWorkers',
     waiting: ''
 };
 function AntRace(props: any) {
     const [ants, setAnts] = useState<any | any>({data: [], status: status.waiting, maxValues: {length: 0, weight:0}});
     const classes = useStyles();
     const calculateAntsChance = () => {
-        setAnts({data: ants.data.map((ant: any, index: number) => {
+        setAnts({data: ants.data.map((ant:any, index:number) => {
             ant.probability = -1;
-            const alter = (currentIndex: number) => {
-                generateAntWinLikelihoodCalculator()((likelihoodOfAntWinning: number) => {
-                    ant.probability = likelihoodOfAntWinning;
+            if (window.Worker) {
+                const likelihoodCalculatorWorker = new Worker('./workers/generateAntWinLikelihoodCalculator.js');
+                likelihoodCalculatorWorker.onmessage = function(event:any){
+                    ant.probability = event.data;
                     ants.data = ants.data.sort((a:any, b:any) => {
                         if (a.probability < b.probability) return 1;
                         if (b.probability < a.probability) return -1;
                         return 0;
                     });
                     setAnts(JSON.parse(JSON.stringify(ants)));
-                });
-            };
-            alter(index);
+                    likelihoodCalculatorWorker.terminate();
+                };
+            }
             return ant;
         }), status: status.ready, maxValues: ants.maxValues});
 
@@ -91,9 +93,22 @@ function AntRace(props: any) {
                             })}
                         </Grid>
                     </div>
-                    <Grid container className={classes.root} justify="center">
-                        <StatusButton onClick={calculateAntsChance} ants={ants} />
-                    </Grid>
+                    {
+                        ants.status !== status.noWorkers && (
+                        <Grid container className={classes.buttonContainer} justify="center">
+                            <StatusButton onClick={calculateAntsChance} ants={ants} />
+                        </Grid>
+                        )
+                    }
+                    {
+                        ants.status === status.noWorkers && (
+                        <Grid container className={classes.root} justify="center">
+                            <Typography gutterBottom variant="caption" component="p">
+                                Your browser doesn't support webworkers, the technology piece that makes ant estimations, parallel tasks and time travel possible. Please update to a modern browser.
+                            </Typography>
+                        </Grid>
+                        )
+                    }
                     <Track ants={ants.data.sort((a:any, b:any) => {
                         if (a.index > b.index) return 1;
                         if (b.index > a.index) return -1;
@@ -106,14 +121,14 @@ function AntRace(props: any) {
                     >
                         <DialogTitle id="alert-dialog-title">{"Sorry, didn't find the right ants"}</DialogTitle>
                         <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                            We just realized that Australia’s jack jumper ant kills more people annually than spiders... We really didn't know. For now please contact one of our survivors... I mean, administrators to fix this problem or try again later.
-                        </DialogContentText>
+                            <DialogContentText id="alert-dialog-description">
+                                We just realized that Australia’s jack jumper ant kills more people annually than spiders... We really didn't know. For now please contact one of our survivors... I mean, administrators to fix this problem or try again later.
+                            </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                        <Button onClick={tryAgain} color="primary">
-                            Try Again
-                        </Button>
+                            <Button onClick={tryAgain} color="primary">
+                                Try Again
+                            </Button>
                         </DialogActions>
                     </Dialog>
                 </div>

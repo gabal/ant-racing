@@ -8,4 +8,7 @@ function generateAntWinLikelihoodCalculator() {
         }, delay);
     };
 }
-export default generateAntWinLikelihoodCalculator;
+generateAntWinLikelihoodCalculator()((likelihoodOfAntWinning) => {
+    postMessage(likelihoodOfAntWinning);
+});
+    
